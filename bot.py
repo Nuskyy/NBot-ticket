@@ -190,10 +190,7 @@ async def on_message(message):
                 server_message_id = message2.id
                 server_was_online = True
                 await new_channel.send(f"**{message.author}**: {message.content}")
-                if message.author.name == 'so_lis':
-                    await message.channel.send('ton ticket est en prioriter ma reine')
-                else:
-                    await message.channel.send(open_ticket)
+                await message.channel.send(open_ticket)
                 if message.attachments:
                     for attachment in message.attachments:
                         await existing_channel.send(attachment.url)        

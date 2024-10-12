@@ -18,4 +18,12 @@ There is a standalone system that allows to check if your server Fivem is on or 
 ![image](https://github.com/user-attachments/assets/09c2abe1-9f61-4a6a-b4d3-8c3dbb4c2b5a)
 
 
+![image](https://github.com/user-attachments/assets/30069404-e5ac-4b63-a7d4-363c54711f21)
+
+
+
+![image](https://github.com/user-attachments/assets/943f6222-ca33-4e75-8908-e6a80a849665)
+
+
+
 

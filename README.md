@@ -1,4 +1,4 @@
-# NBot
+# NBot -Ticket 
 
 Ce bot a été fait en python.
 Il permet de faire un systeme de tickets similaire au ModMailsBot (https://github.com/Dragory/modmailbot).

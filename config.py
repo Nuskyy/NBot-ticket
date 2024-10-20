@@ -59,3 +59,9 @@ LIMITE_MAX_SAME_MESSAGE = 5 # 5 same message
 
 SPAM_KICK_MESSAGE = "Vous venez d'être kick du serveur pour spam. \n Vous pouvez toujours rejoindre : \n https://discord.gg/pqqKQvCvqe "
 
+# SETTINGS PATCHNOTE
+
+AUTHORIZED_ROLES_PATCH_NOTE = [1265361071095545970, 1272227379632144427]
+
+CHANNEL_ID_PATCHNOTE = 1297623060572147743
+

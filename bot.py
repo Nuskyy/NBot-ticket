@@ -309,7 +309,6 @@ async def patch(ctx, *, texte: str = None):
         return
 
     if not any(role.id in config.AUTHORIZED_ROLES_PATCH_NOTE for role in ctx.author.roles):
-        await ctx.send("Vous n'avez pas les permissions nécessaires pour utiliser cette commande.")
         return
 
     channel = bot.get_channel(config.CHANNEL_ID_PATCHNOTE)

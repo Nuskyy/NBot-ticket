@@ -190,6 +190,7 @@ async def on_message(message):
                 server_message_id = message2.id
                 server_was_online = True
                 await new_channel.send(f"**{message.author}**: {message.content}")
+                
                 await message.channel.send(open_ticket)
                 if message.attachments:
                     for attachment in message.attachments:
@@ -207,6 +208,22 @@ async def on_message(message):
             await message.delete()
 
             await message.author.send(config.protect_message)
+
+        user_id = message.author.id
+        content = message.content.lower()  
+
+        if user_id not in recent_messages:
+            recent_messages[user_id] = []
+
+        recent_messages[user_id].append(content)
+
+        if len(recent_messages[user_id]) > REPETITION_LIMIT:
+            recent_messages[user_id].pop(0)
+
+        if recent_messages[user_id].count(content) >= REPETITION_LIMIT:
+            await message.author.send(config.SPAM_KICK_MESSAGE)
+            await kick_user_and_delete_messages(message.author, message.guild, message.channel)
+
     else: 
         print('Mode protect is not active')
     await bot.process_commands(message)

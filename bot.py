@@ -230,11 +230,12 @@ async def on_message(message):
 
 
 
-
 @bot.command()
 async def close(ctx):
     if ctx.channel.name.startswith("ticket-de-"):
         owner_name = ctx.channel.name.split("ticket-de-")[1]
+        if not any(role.id in config.AUTHORIZED_ROLES_CLOSE for role in ctx.author.roles):
+            return
 
         user = discord.utils.get(ctx.guild.members, name=owner_name)
 
@@ -265,6 +266,9 @@ async def on_member_join(member):
 async def reply(ctx, *, message_content: str = None):
     if message_content is None:
         await ctx.send("Tu dois fournir un message à répondre. Utilise `!reply <message>`.")
+        return
+    
+    if not any(role.id in config.AUTHORIZED_ROLES_REPLY for role in ctx.author.roles):
         return
     
     if ctx.channel.name.startswith("ticket-de"):
@@ -300,6 +304,8 @@ async def reply(ctx, *, message_content: str = None):
             
     else:
         await ctx.send("Cette commande ne peut être utilisée que dans un salon privé.")
+
+
 
 
 @bot.command()

@@ -301,6 +301,34 @@ async def reply(ctx, *, message_content: str = None):
     else:
         await ctx.send("Cette commande ne peut être utilisée que dans un salon privé.")
 
+
+@bot.command()
+async def patch(ctx, *, texte: str = None):
+    if texte is None:
+        await ctx.send("Tu dois fournir un texte à envoyer avec la commande `!patch <texte>`.")
+        return
+
+    if not any(role.id in config.AUTHORIZED_ROLES_PATCH_NOTE for role in ctx.author.roles):
+        await ctx.send("Vous n'avez pas les permissions nécessaires pour utiliser cette commande.")
+        return
+
+    channel = bot.get_channel(config.CHANNEL_ID_PATCHNOTE)
+
+    if channel is None:
+        await ctx.send("Le salon spécifié est introuvable.")
+        return
+
+    embed = discord.Embed(
+        title="📢 Mise à jour du serveur",
+        description=f"{texte}",
+        color=discord.Color.blue()
+    )
+    embed.set_footer(text=f"Cordialement {ctx.author.display_name}")
+
+    await channel.send(embed=embed)
+    await ctx.send("Le message a été envoyé avec succès dans le salon des patchs.")
+    
+
 @bot.tree.command(name="wl", description="La commande vous donne le rôle permettant de vous connecter au serveur")
 async def wl(interaction: discord.Interaction):
     role = discord.utils.get(interaction.guild.roles, name="Whitelist")

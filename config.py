@@ -54,3 +54,8 @@ USER_IDS_MP_SERVEUR_DOWN = [1234567890]
 
 protect = 'on'
 protect_message = "🔔 Votre message contenant un lien Discord a été supprimé car vous n'avez pas les autorisations nécessaires."
+
+LIMITE_MAX_SAME_MESSAGE = 5 # 5 same message
+
+SPAM_KICK_MESSAGE = "Vous venez d'être kick du serveur pour spam. \n Vous pouvez toujours rejoindre : \n https://discord.gg/pqqKQvCvqe "
+
